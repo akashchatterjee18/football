@@ -18,7 +18,7 @@ expected_columns = joblib.load("columns.pkl")
 # --------------------------------------------------
 
 st.set_page_config(
-    page_title="Football Player Market Value Prediction",
+    page_title="Football Player Market Value Prediction by Akash Chatterjee",
     page_icon="⚽",
     layout="wide"
 )
