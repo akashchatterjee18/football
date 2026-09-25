@@ -375,7 +375,7 @@ with col3:
 
 
 # --------------------------------------------------
-# Position
+# Preferred position
 # --------------------------------------------------
 
 st.header("Preferred Position")
@@ -383,11 +383,33 @@ st.header("Preferred Position")
 position = st.selectbox(
     "Select Preferred Position",
     [
-        "GK", "CB", "LB", "RB", "LWB", "RWB",
-        "CDM", "CM", "CAM", "LM", "RM",
-        "LW", "RW", "LF", "RF", "CF", "ST",
-        "LS", "RS", "LCB", "RCB", "LCM", "RCM",
-        "LDM", "RDM", "LAM", "RAM"
+        "GK",
+        "CB",
+        "LB",
+        "RB",
+        "LWB",
+        "RWB",
+        "CDM",
+        "CM",
+        "CAM",
+        "LM",
+        "RM",
+        "LW",
+        "RW",
+        "LF",
+        "RF",
+        "CF",
+        "ST",
+        "LS",
+        "RS",
+        "LCB",
+        "RCB",
+        "LCM",
+        "RCM",
+        "LDM",
+        "RDM",
+        "LAM",
+        "RAM"
     ]
 )
 
@@ -457,11 +479,33 @@ input_data = {
 # --------------------------------------------------
 
 positions = [
-    "GK", "CB", "LB", "RB", "LWB", "RWB",
-    "CDM", "CM", "CAM", "LM", "RM",
-    "LW", "RW", "LF", "RF", "CF", "ST",
-    "LS", "RS", "LCB", "RCB", "LCM", "RCM",
-    "LDM", "RDM", "LAM", "RAM"
+    "GK",
+    "CB",
+    "LB",
+    "RB",
+    "LWB",
+    "RWB",
+    "CDM",
+    "CM",
+    "CAM",
+    "LM",
+    "RM",
+    "LW",
+    "RW",
+    "LF",
+    "RF",
+    "CF",
+    "ST",
+    "LS",
+    "RS",
+    "LCB",
+    "RCB",
+    "LCM",
+    "RCM",
+    "LDM",
+    "RDM",
+    "LAM",
+    "RAM"
 ]
 
 for pos in positions:
@@ -487,10 +531,23 @@ input_df = input_df[expected_columns]
 
 
 # --------------------------------------------------
-# Scale input
+# Scale only columns used during training
 # --------------------------------------------------
 
-input_scaled = scaler.transform(input_df)
+scaled_columns = scaler.feature_names_in_
+
+input_scaled = input_df.copy()
+
+input_scaled[scaled_columns] = scaler.transform(
+    input_df[scaled_columns]
+)
+
+
+# --------------------------------------------------
+# Final feature order
+# --------------------------------------------------
+
+input_scaled = input_scaled[expected_columns]
 
 
 # --------------------------------------------------
