@@ -3,19 +3,9 @@ import pandas as pd
 import numpy as np
 import joblib
 
-
-# --------------------------------------------------
-# Load trained objects
-# --------------------------------------------------
-
 model = joblib.load("football_market_value_model.pkl")
 scaler = joblib.load("scalar.pkl")
 expected_columns = joblib.load("columns.pkl")
-
-
-# --------------------------------------------------
-# Page configuration
-# --------------------------------------------------
 
 st.set_page_config(
     page_title="Football Player Market Value Prediction by Akash Chatterjee",
@@ -24,21 +14,12 @@ st.set_page_config(
 )
 
 
-# --------------------------------------------------
-# Title
-# --------------------------------------------------
-
-st.title("Football Player Market Value Prediction")
+st.title("Football Player Market Value Prediction by Akash Chatterjee")
 
 st.markdown(
     "Enter the player's attributes below to estimate their "
     "football market value."
 )
-
-
-# --------------------------------------------------
-# Player information
-# --------------------------------------------------
 
 st.header("Player Information")
 
